@@ -69,10 +69,10 @@ export const Benefits = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-orange-50 via-white to-blue-50 relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-orange-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-orange-200 to-blue-200 transform rotate-12 scale-150"></div>
+      <div className="absolute inset-0 opacity-5 dark:opacity-10">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-orange-200 to-blue-200 dark:from-orange-800 dark:to-blue-800 transform rotate-12 scale-150"></div>
       </div>
       
       {/* Floating elements */}
@@ -80,7 +80,7 @@ export const Benefits = () => {
         {[...Array(15)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-gradient-to-r from-orange-400 to-blue-500 rounded-full opacity-20 animate-pulse"
+            className="absolute w-2 h-2 bg-gradient-to-r from-orange-400 to-blue-500 rounded-full opacity-20 dark:opacity-30 animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -93,15 +93,15 @@ export const Benefits = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-6 shadow-lg">
+          <div className="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 mb-6 shadow-lg">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             Why Choose ChatCampus
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
             Your Value, <span className="bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">Delivered</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Experience the future of campus communication with features designed specifically for Indian students.
           </p>
         </div>
@@ -110,7 +110,7 @@ export const Benefits = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className={`group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:scale-105 border border-white/50 ${
+              className={`group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:scale-105 border border-white/50 dark:border-gray-700/50 ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
               }`}
               style={{ transitionDelay: `${benefit.delay}ms` }}
@@ -121,10 +121,10 @@ export const Benefits = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-orange-600 transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300">
                 {benefit.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
                 {benefit.description}
               </p>
 
