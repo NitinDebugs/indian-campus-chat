@@ -73,7 +73,7 @@ export const HowItWorks = () => {
               )}
 
               {/* Step card */}
-              <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 group-hover:border-orange-200 dark:group-hover:border-orange-600">
+              <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 group-hover:border-orange-200 dark:group-hover:border-orange-600 hover:scale-105">
                 {/* Step number */}
                 <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-r from-orange-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                   {index + 1}
@@ -85,11 +85,8 @@ export const HowItWorks = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">{step.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{step.description}</p>
-
-                {/* Hover effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-50 to-blue-50 dark:from-orange-900/20 dark:to-blue-900/20 rounded-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none"></div>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300">{step.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">{step.description}</p>
               </div>
             </div>
           ))}
