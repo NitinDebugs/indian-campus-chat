@@ -37,9 +37,12 @@ export const Navigation = () => {
             <a href="#how-it-works" className="text-gray-700 hover:text-orange-600 transition-colors duration-300 font-medium">How It Works</a>
             <a href="#colleges" className="text-gray-700 hover:text-orange-600 transition-colors duration-300 font-medium">Colleges</a>
             <a href="#about" className="text-gray-700 hover:text-orange-600 transition-colors duration-300 font-medium">About</a>
-            <button className="bg-gradient-to-r from-orange-500 to-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-              Start Chatting
-            </button>
+            <a href="/login" className="text-gray-700 hover:text-orange-600 transition-colors duration-300 font-medium">Login</a>
+            <a href="/login">
+              <button className="bg-gradient-to-r from-orange-500 to-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                Start Chatting
+              </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -59,9 +62,12 @@ export const Navigation = () => {
               <a href="#how-it-works" className="text-gray-700 hover:text-orange-600 transition-colors duration-300 font-medium">How It Works</a>
               <a href="#colleges" className="text-gray-700 hover:text-orange-600 transition-colors duration-300 font-medium">Colleges</a>
               <a href="#about" className="text-gray-700 hover:text-orange-600 transition-colors duration-300 font-medium">About</a>
-              <button className="bg-gradient-to-r from-orange-500 to-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 w-full">
-                Start Chatting
-              </button>
+              <a href="/login" className="text-gray-700 hover:text-orange-600 transition-colors duration-300 font-medium">Login</a>
+              <a href="/login">
+                <button className="bg-gradient-to-r from-orange-500 to-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 w-full">
+                  Start Chatting
+                </button>
+              </a>
             </div>
           </div>
         )}

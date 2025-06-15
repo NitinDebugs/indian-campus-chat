@@ -35,7 +35,8 @@ export const FeaturedColleges = () => {
       students: "11,000+",
       rating: 4.9,
       color: "from-blue-500 to-indigo-600",
-      logo: "🏛️"
+      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Premier technical education institute known for excellence in engineering and technology."
     },
     {
       name: "Delhi University",
@@ -45,7 +46,8 @@ export const FeaturedColleges = () => {
       students: "132,000+",
       rating: 4.7,
       color: "from-red-500 to-pink-600",
-      logo: "🎓"
+      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "One of India's largest universities offering diverse academic programs across multiple disciplines."
     },
     {
       name: "VIT Vellore",
@@ -55,7 +57,8 @@ export const FeaturedColleges = () => {
       students: "55,000+",
       rating: 4.8,
       color: "from-green-500 to-emerald-600",
-      logo: "⚡"
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Leading private technical university with state-of-the-art facilities and global partnerships."
     },
     {
       name: "JNU",
@@ -65,7 +68,8 @@ export const FeaturedColleges = () => {
       students: "8,500+",
       rating: 4.6,
       color: "from-purple-500 to-violet-600",
-      logo: "📚"
+      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Prestigious central university renowned for social sciences, languages, and research excellence."
     },
     {
       name: "SRM Institute",
@@ -75,7 +79,8 @@ export const FeaturedColleges = () => {
       students: "50,000+",
       rating: 4.5,
       color: "from-orange-500 to-red-600",
-      logo: "🔬"
+      image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Multi-disciplinary university offering comprehensive education with modern infrastructure."
     },
     {
       name: "Christ University",
@@ -85,7 +90,8 @@ export const FeaturedColleges = () => {
       students: "25,000+",
       rating: 4.4,
       color: "from-teal-500 to-cyan-600",
-      logo: "✨"
+      image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Deemed university known for holistic education and strong industry connections."
     }
   ];
 
@@ -132,18 +138,22 @@ export const FeaturedColleges = () => {
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              {/* College Header */}
-              <div className={`h-32 bg-gradient-to-r ${college.color} relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/10"></div>
-                <div className="absolute top-4 left-4 text-4xl">{college.logo}</div>
-                <div className="absolute top-4 right-4 flex items-center gap-1 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                  <Star size={16} className="text-yellow-300 fill-current" />
-                  <span className="text-white font-semibold text-sm">{college.rating}</span>
+              {/* College Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={college.image} 
+                  alt={college.name}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute top-4 right-4 flex items-center gap-1 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <Star size={16} className="text-yellow-500 fill-current" />
+                  <span className="text-gray-800 font-semibold text-sm">{college.rating}</span>
                 </div>
                 
-                {/* Animated elements */}
+                {/* Animated overlay */}
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-white/30">
-                  <div className="h-full bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 origin-left"></div>
+                  <div className={`h-full bg-gradient-to-r ${college.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 origin-left`}></div>
                 </div>
               </div>
 
@@ -161,6 +171,10 @@ export const FeaturedColleges = () => {
                   <span>{college.students} Students</span>
                 </div>
 
+                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                  {college.description}
+                </p>
+
                 <div className="flex gap-2 mb-6">
                   <span className="px-3 py-1 bg-orange-100 text-orange-700 text-sm font-medium rounded-full">
                     {college.type}
@@ -171,7 +185,7 @@ export const FeaturedColleges = () => {
                 </div>
 
                 <button className={`w-full bg-gradient-to-r ${college.color} text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105`}>
-                  Join Chat Room
+                  View Details & Chat
                 </button>
               </div>
             </div>
