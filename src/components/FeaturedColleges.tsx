@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { MapPin, Users, Star } from 'lucide-react';
+import { MapPin, Users, Star, GraduationCap, DollarSign, TrendingUp, Award } from 'lucide-react';
 
 export const FeaturedColleges = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,9 +34,17 @@ export const FeaturedColleges = () => {
       category: "Government",
       students: "11,000+",
       rating: 4.9,
+      ranking: "NIRF Rank #3 (2024)",
       color: "from-blue-500 to-indigo-600",
       image: "/lovable-uploads/b2f92153-bf4b-4201-988a-6979676859cf.png",
-      description: "Premier technical education institute known for excellence in engineering and technology."
+      description: "Premier technical education institute known for excellence in engineering and technology.",
+      courses: ["B.Tech", "M.Tech", "PhD", "Dual Degree", "MBA"],
+      admissionFees: "₹2.5 Lakhs/year",
+      placement: {
+        average: "₹22 LPA",
+        highest: "₹2.14 Crore",
+        percentage: "98%"
+      }
     },
     {
       name: "VIT Vellore",
@@ -45,9 +53,17 @@ export const FeaturedColleges = () => {
       category: "Private",
       students: "55,000+",
       rating: 4.8,
+      ranking: "NIRF Rank #15 (2024)",
       color: "from-green-500 to-emerald-600",
       image: "/lovable-uploads/a1ae13d9-6a11-43ec-aa41-debcf600d5f7.png",
-      description: "Leading private technical university with state-of-the-art facilities and global partnerships."
+      description: "Leading private technical university with state-of-the-art facilities and global partnerships.",
+      courses: ["B.Tech", "M.Tech", "MBA", "BBA", "MCA"],
+      admissionFees: "₹1.98 Lakhs/year",
+      placement: {
+        average: "₹7.5 LPA",
+        highest: "₹75 LPA",
+        percentage: "95%"
+      }
     },
     {
       name: "SRM Institute",
@@ -56,9 +72,17 @@ export const FeaturedColleges = () => {
       category: "Private",
       students: "50,000+",
       rating: 4.5,
+      ranking: "NIRF Rank #41 (2024)",
       color: "from-orange-500 to-red-600",
       image: "/lovable-uploads/7cb1ad99-ba18-4722-8e57-3e580242d805.png",
-      description: "Multi-disciplinary university offering comprehensive education with modern infrastructure."
+      description: "Multi-disciplinary university offering comprehensive education with modern infrastructure.",
+      courses: ["B.Tech", "M.Tech", "MBBS", "MBA", "BBA"],
+      admissionFees: "₹2.5 Lakhs/year",
+      placement: {
+        average: "₹6.5 LPA",
+        highest: "₹54 LPA",
+        percentage: "92%"
+      }
     },
     {
       name: "Delhi University",
@@ -67,9 +91,17 @@ export const FeaturedColleges = () => {
       category: "Government", 
       students: "132,000+",
       rating: 4.7,
+      ranking: "NIRF Rank #11 (2024)",
       color: "from-red-500 to-pink-600",
       image: "/lovable-uploads/3a0a4560-d02e-465b-bc00-c65650c46fa1.png",
-      description: "One of India's largest universities offering diverse academic programs across multiple disciplines."
+      description: "One of India's largest universities offering diverse academic programs across multiple disciplines.",
+      courses: ["B.A", "B.Com", "B.Sc", "M.A", "MBA"],
+      admissionFees: "₹15,000/year",
+      placement: {
+        average: "₹5.5 LPA",
+        highest: "₹25 LPA",
+        percentage: "85%"
+      }
     },
     {
       name: "JNU",
@@ -78,9 +110,17 @@ export const FeaturedColleges = () => {
       category: "Government",
       students: "8,500+",
       rating: 4.6,
+      ranking: "NIRF Rank #2 (2024)",
       color: "from-purple-500 to-violet-600",
       image: "/lovable-uploads/c5c47e54-98e4-4e88-939f-1a010db09196.png",
-      description: "Prestigious central university renowned for social sciences, languages, and research excellence."
+      description: "Prestigious central university renowned for social sciences, languages, and research excellence.",
+      courses: ["M.A", "M.Phil", "PhD", "B.A", "M.Sc"],
+      admissionFees: "₹2,000/year",
+      placement: {
+        average: "₹6 LPA",
+        highest: "₹18 LPA",
+        percentage: "80%"
+      }
     },
     {
       name: "Christ University",
@@ -89,9 +129,17 @@ export const FeaturedColleges = () => {
       category: "Private",
       students: "25,000+",
       rating: 4.4,
+      ranking: "NIRF Rank #20 (2024)",
       color: "from-teal-500 to-cyan-600",
       image: "/lovable-uploads/6783964c-c46a-4036-9a2e-383f847721be.png",
-      description: "Deemed university known for holistic education and strong industry connections."
+      description: "Deemed university known for holistic education and strong industry connections.",
+      courses: ["BBA", "MBA", "B.Tech", "B.A", "M.A"],
+      admissionFees: "₹3.5 Lakhs/year",
+      placement: {
+        average: "₹5.8 LPA",
+        highest: "₹28 LPA",
+        percentage: "88%"
+      }
     }
   ];
 
@@ -129,7 +177,7 @@ export const FeaturedColleges = () => {
         </div>
 
         {/* Colleges Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
           {filteredColleges.map((college, index) => (
             <div
               key={college.name}
@@ -171,9 +219,55 @@ export const FeaturedColleges = () => {
                   <span className="text-sm sm:text-base">{college.students} Students</span>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-                  {college.description}
-                </p>
+                {/* Ranking */}
+                <div className="flex items-center gap-2 mb-4">
+                  <Award size={16} className="text-yellow-600 dark:text-yellow-400" />
+                  <span className="text-sm font-bold text-yellow-700 dark:text-yellow-400">{college.ranking}</span>
+                </div>
+
+                {/* Course Offerings */}
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <GraduationCap size={16} className="text-blue-600 dark:text-blue-400" />
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Courses:</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {college.courses.map((course, idx) => (
+                      <span key={idx} className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs rounded-full">
+                        {course}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Admission Fees */}
+                <div className="flex items-center gap-2 mb-4">
+                  <DollarSign size={16} className="text-green-600 dark:text-green-400" />
+                  <span className="text-sm text-gray-600 dark:text-gray-300">Fees: </span>
+                  <span className="text-sm font-bold text-green-700 dark:text-green-400">{college.admissionFees}</span>
+                </div>
+
+                {/* Placement Stats */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <TrendingUp size={16} className="text-purple-600 dark:text-purple-400" />
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Placements:</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 text-xs">
+                    <div className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded">
+                      <div className="font-bold text-purple-700 dark:text-purple-400">{college.placement.average}</div>
+                      <div className="text-gray-600 dark:text-gray-300">Avg</div>
+                    </div>
+                    <div className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded">
+                      <div className="font-bold text-purple-700 dark:text-purple-400">{college.placement.highest}</div>
+                      <div className="text-gray-600 dark:text-gray-300">High</div>
+                    </div>
+                    <div className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded">
+                      <div className="font-bold text-purple-700 dark:text-purple-400">{college.placement.percentage}</div>
+                      <div className="text-gray-600 dark:text-gray-300">Rate</div>
+                    </div>
+                  </div>
+                </div>
 
                 <div className="flex gap-2 mb-6 flex-wrap">
                   <span className="px-2 sm:px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 text-xs sm:text-sm font-medium rounded-full">
