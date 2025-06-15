@@ -91,16 +91,21 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Ensure dark mode applies to html element */
+  html.dark {
+    @apply bg-gray-900;
+  }
 }
 
 @layer components {
-  /* Smooth scroll and custom scrollbar */
+  /* Custom scrollbar with dark mode support */
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-100;
+    @apply bg-gray-100 dark:bg-gray-800;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -126,7 +131,7 @@
   }
 
   .btn-secondary {
-    @apply bg-white text-gray-700 border border-gray-200 px-6 py-3 rounded-full font-semibold hover:bg-gray-50 hover:shadow-md transition-all duration-300;
+    @apply bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300;
   }
 
   /* Card hover effects */
@@ -151,9 +156,15 @@
     background-color: #138808;
   }
 
-  /* Animated backgrounds */
+  /* Animated backgrounds with dark mode support */
   .bg-animated {
     background: linear-gradient(-45deg, #ff9933, #ffffff, #138808, #000080);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  .dark .bg-animated {
+    background: linear-gradient(-45deg, #ff9933, #374151, #138808, #000080);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
   }
@@ -181,10 +192,10 @@
 
   /* Custom focus styles */
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900;
   }
 
-  /* Loading spinner */
+  /* Loading spinner with dark mode support */
   .spinner {
     border: 4px solid #f3f3f3;
     border-top: 4px solid #ff9933;
@@ -192,6 +203,11 @@
     width: 40px;
     height: 40px;
     animation: spin 1s linear infinite;
+  }
+
+  .dark .spinner {
+    border: 4px solid #374151;
+    border-top: 4px solid #ff9933;
   }
 
   @keyframes spin {
@@ -241,6 +257,6 @@
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   .gradient-text {
-    @apply text-gray-900;
+    @apply text-gray-900 dark:text-gray-100;
   }
 }

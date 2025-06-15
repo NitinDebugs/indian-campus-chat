@@ -10,7 +10,7 @@ export const Hero: React.FC<HeroProps> = ({ scrollY }) => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-100 via-white to-blue-100">
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-100 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="absolute inset-0 opacity-30">
           {/* Floating particles */}
           {[...Array(20)].map((_, i) => (
@@ -28,9 +28,9 @@ export const Hero: React.FC<HeroProps> = ({ scrollY }) => {
         </div>
         
         {/* Geometric shapes */}
-        <div className="absolute top-20 left-10 w-20 h-20 border-2 border-orange-300 rounded-full animate-spin" style={{ animationDuration: '20s' }} />
-        <div className="absolute bottom-20 right-10 w-16 h-16 border-2 border-blue-300 rotate-45 animate-pulse" />
-        <div className="absolute top-1/2 left-1/4 w-12 h-12 bg-gradient-to-r from-orange-200 to-blue-200 rounded-lg animate-bounce" style={{ animationDuration: '3s' }} />
+        <div className="absolute top-20 left-10 w-20 h-20 border-2 border-orange-300 dark:border-orange-600 rounded-full animate-spin" style={{ animationDuration: '20s' }} />
+        <div className="absolute bottom-20 right-10 w-16 h-16 border-2 border-blue-300 dark:border-blue-600 rotate-45 animate-pulse" />
+        <div className="absolute top-1/2 left-1/4 w-12 h-12 bg-gradient-to-r from-orange-200 to-blue-200 dark:from-orange-600 dark:to-blue-600 rounded-lg animate-bounce" style={{ animationDuration: '3s' }} />
       </div>
 
       {/* Hero Content */}
@@ -40,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ scrollY }) => {
           style={{ transform: `translateY(${scrollY * 0.1}px)` }}
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-6 shadow-lg">
+          <div className="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 mb-6 shadow-lg">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             Connecting 500+ Indian Colleges
           </div>
@@ -50,10 +50,10 @@ export const Hero: React.FC<HeroProps> = ({ scrollY }) => {
               Connect Your Campus,
             </span>
             <br />
-            <span className="text-gray-800">Effortlessly</span>
+            <span className="text-gray-800 dark:text-white">Effortlessly</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
             Offline chat rooms for India's top colleges – Filter, Join, and Start Chatting with your classmates and nearby students.
           </p>
 
@@ -62,7 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ scrollY }) => {
               Start Chatting
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </button>
-            <button className="text-gray-700 hover:text-orange-600 font-semibold text-lg flex items-center gap-2 transition-colors duration-300">
+            <button className="text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 font-semibold text-lg flex items-center gap-2 transition-colors duration-300">
               <i className="fas fa-play-circle text-2xl"></i>
               Watch Demo
             </button>
@@ -71,25 +71,25 @@ export const Hero: React.FC<HeroProps> = ({ scrollY }) => {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="flex items-center justify-center gap-2 text-3xl font-bold text-orange-600 mb-2">
+              <div className="flex items-center justify-center gap-2 text-3xl font-bold text-orange-600 dark:text-orange-400 mb-2">
                 <Users size={32} />
                 50K+
               </div>
-              <p className="text-gray-600">Active Students</p>
+              <p className="text-gray-600 dark:text-gray-400">Active Students</p>
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center gap-2 text-3xl font-bold text-blue-600 mb-2">
+              <div className="flex items-center justify-center gap-2 text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                 <MapPin size={32} />
                 500+
               </div>
-              <p className="text-gray-600">Connected Colleges</p>
+              <p className="text-gray-600 dark:text-gray-400">Connected Colleges</p>
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center gap-2 text-3xl font-bold text-green-600 mb-2">
+              <div className="flex items-center justify-center gap-2 text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
                 <i className="fas fa-comments text-3xl"></i>
                 1M+
               </div>
-              <p className="text-gray-600">Messages Sent</p>
+              <p className="text-gray-600 dark:text-gray-400">Messages Sent</p>
             </div>
           </div>
         </div>
@@ -97,8 +97,8 @@ export const Hero: React.FC<HeroProps> = ({ scrollY }) => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
+        <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2 animate-bounce"></div>
         </div>
       </div>
     </section>

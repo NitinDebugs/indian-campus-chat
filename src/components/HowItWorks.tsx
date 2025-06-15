@@ -45,13 +45,13 @@ export const HowItWorks = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="how-it-works" className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section ref={sectionRef} id="how-it-works" className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
             How It <span className="bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">Works</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Connect with your campus community in just three simple steps. No internet required, just pure offline connectivity.
           </p>
         </div>
@@ -67,13 +67,13 @@ export const HowItWorks = () => {
             >
               {/* Connection line for desktop */}
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-24 left-full w-full h-0.5 bg-gradient-to-r from-gray-300 to-transparent z-0 transform translate-x-4">
+                <div className="hidden md:block absolute top-24 left-full w-full h-0.5 bg-gradient-to-r from-gray-300 dark:from-gray-600 to-transparent z-0 transform translate-x-4">
                   <div className={`h-full bg-gradient-to-r ${step.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 origin-left`}></div>
                 </div>
               )}
 
               {/* Step card */}
-              <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 group-hover:border-orange-200">
+              <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 group-hover:border-orange-200 dark:group-hover:border-orange-600">
                 {/* Step number */}
                 <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-r from-orange-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                   {index + 1}
@@ -85,11 +85,11 @@ export const HowItWorks = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">{step.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">{step.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{step.description}</p>
 
                 {/* Hover effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-50 to-blue-50 dark:from-orange-900/20 dark:to-blue-900/20 rounded-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none"></div>
               </div>
             </div>
           ))}
