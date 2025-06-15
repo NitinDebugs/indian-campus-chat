@@ -1,10 +1,11 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Wifi, Users, Shield, Zap, Heart, Globe } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 export const Benefits = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,6 +68,16 @@ export const Benefits = () => {
       delay: 1000
     }
   ];
+
+  const handleStartChatting = () => {
+    toast({
+      title: "Let's Start Chatting!",
+      description: "Taking you to join the campus community...",
+    });
+    
+    // Navigate to login page
+    window.location.href = '/login';
+  };
 
   return (
     <section ref={sectionRef} className="py-20 bg-gradient-to-br from-orange-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
@@ -141,7 +152,10 @@ export const Benefits = () => {
             <div className="relative z-10">
               <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Campus Experience?</h3>
               <p className="text-xl mb-6 opacity-90">Join thousands of students already connecting through ChatCampus</p>
-              <button className="bg-white text-gray-800 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+              <button 
+                onClick={handleStartChatting}
+                className="bg-white text-gray-800 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              >
                 Start Chatting Today
               </button>
             </div>

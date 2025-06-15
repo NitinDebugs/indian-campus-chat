@@ -1,14 +1,21 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { MapPin, Users, Star, User, LogIn } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [selectedCollege, setSelectedCollege] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const featuredColleges = [
     {
@@ -53,9 +60,76 @@ const Login = () => {
     }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted');
+    setIsLoading(true);
+
+    // Basic validation
+    if (!formData.email || !formData.password) {
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields",
+        variant: "destructive"
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    if (isSignUp && (!formData.name || !selectedCollege)) {
+      toast({
+        title: "Error", 
+        description: "Please fill in all fields and select your college",
+        variant: "destructive"
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    // Simulate API call
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast({
+        title: isSignUp ? "Account Created!" : "Welcome Back!",
+        description: isSignUp 
+          ? `Successfully created account for ${formData.name}` 
+          : "You have been signed in successfully",
+      });
+
+      console.log('Form submitted with data:', {
+        ...formData,
+        college: selectedCollege,
+        isSignUp
+      });
+      
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleCollegeSelect = (collegeId: string) => {
+    setSelectedCollege(collegeId);
+    const college = featuredColleges.find(c => c.id === collegeId);
+    if (college) {
+      toast({
+        title: "College Selected",
+        description: `Selected ${college.name}`,
+      });
+    }
   };
 
   return (
@@ -104,9 +178,12 @@ const Login = () => {
                       <div className="space-y-2">
                         <Label htmlFor="name" className="text-gray-700 dark:text-gray-300">Full Name</Label>
                         <Input 
-                          id="name" 
+                          id="name"
+                          name="name"
                           type="text" 
                           placeholder="Enter your full name"
+                          value={formData.name}
+                          onChange={handleInputChange}
                           className="h-10 sm:h-12 bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white"
                         />
                       </div>
@@ -115,9 +192,12 @@ const Login = () => {
                     <div className="space-y-2">
                       <Label htmlFor="email" className="text-gray-700 dark:text-gray-300">Email</Label>
                       <Input 
-                        id="email" 
+                        id="email"
+                        name="email"
                         type="email" 
                         placeholder="Enter your college email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         className="h-10 sm:h-12 bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white"
                       />
                     </div>
@@ -125,9 +205,12 @@ const Login = () => {
                     <div className="space-y-2">
                       <Label htmlFor="password" className="text-gray-700 dark:text-gray-300">Password</Label>
                       <Input 
-                        id="password" 
+                        id="password"
+                        name="password"
                         type="password" 
                         placeholder="Enter your password"
+                        value={formData.password}
+                        onChange={handleInputChange}
                         className="h-10 sm:h-12 bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white"
                       />
                     </div>
@@ -138,7 +221,7 @@ const Login = () => {
                         <select 
                           id="college"
                           value={selectedCollege}
-                          onChange={(e) => setSelectedCollege(e.target.value)}
+                          onChange={(e) => handleCollegeSelect(e.target.value)}
                           className="w-full h-10 sm:h-12 px-3 py-2 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-gray-900 dark:text-white text-sm sm:text-base"
                         >
                           <option value="">Choose your college</option>
@@ -153,9 +236,12 @@ const Login = () => {
                     
                     <Button 
                       type="submit" 
-                      className="w-full h-10 sm:h-12 bg-gradient-to-r from-orange-500 to-blue-600 hover:from-orange-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 text-sm sm:text-base"
+                      disabled={isLoading}
+                      className="w-full h-10 sm:h-12 bg-gradient-to-r from-orange-500 to-blue-600 hover:from-orange-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 text-sm sm:text-base disabled:opacity-50"
                     >
-                      {isSignUp ? (
+                      {isLoading ? (
+                        "Processing..."
+                      ) : isSignUp ? (
                         <>
                           <User className="mr-2" size={18} />
                           Create Account
@@ -173,7 +259,12 @@ const Login = () => {
                     <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                       {isSignUp ? 'Already have an account?' : "Don't have an account?"}
                       <button
-                        onClick={() => setIsSignUp(!isSignUp)}
+                        type="button"
+                        onClick={() => {
+                          setIsSignUp(!isSignUp);
+                          setFormData({ name: '', email: '', password: '' });
+                          setSelectedCollege('');
+                        }}
                         className="ml-2 text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-semibold"
                       >
                         {isSignUp ? 'Sign In' : 'Sign Up'}
@@ -245,6 +336,12 @@ const Login = () => {
                   <h3 className="text-lg sm:text-xl font-bold mb-2">Can't find your college?</h3>
                   <p className="mb-4 text-orange-100 text-sm sm:text-base">We're adding new institutions every week!</p>
                   <Button 
+                    onClick={() => {
+                      toast({
+                        title: "Request Submitted",
+                        description: "We'll add your college soon! You'll be notified when it's available.",
+                      });
+                    }}
                     variant="secondary" 
                     className="bg-white text-gray-800 hover:bg-gray-100 text-sm sm:text-base px-4 sm:px-6 py-2"
                   >

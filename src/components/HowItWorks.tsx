@@ -1,10 +1,11 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { MapPin, Users, MessageCircle } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 export const HowItWorks = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -43,6 +44,16 @@ export const HowItWorks = () => {
       color: "from-green-500 to-teal-500"
     }
   ];
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Getting Started!",
+      description: "Redirecting you to create your account...",
+    });
+    
+    // Navigate to login page
+    window.location.href = '/login';
+  };
 
   return (
     <section ref={sectionRef} id="how-it-works" className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
@@ -94,7 +105,10 @@ export const HowItWorks = () => {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <button className="bg-gradient-to-r from-orange-500 to-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+          <button 
+            onClick={handleGetStarted}
+            className="bg-gradient-to-r from-orange-500 to-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+          >
             Get Started Now
           </button>
         </div>
