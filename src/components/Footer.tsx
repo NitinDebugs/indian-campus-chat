@@ -1,29 +1,103 @@
 
 import React from 'react';
 import { MapPin, Mail, Phone, Heart } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export const Footer = () => {
+  const { language } = useTheme();
+
+  const translations = {
+    en: {
+      description: 'Connecting India\'s brightest minds across campuses. Join the revolution of offline communication and build meaningful relationships with students nationwide.',
+      quickLinks: 'Quick Links',
+      topColleges: 'Top Colleges',
+      support: 'Support',
+      newsletter: {
+        title: 'Stay Updated',
+        description: 'Get the latest updates about new colleges, features, and campus events.',
+        placeholder: 'Enter your email',
+        subscribe: 'Subscribe'
+      },
+      madeWith: 'Made with',
+      forStudents: 'for Indian students',
+      copyright: '© 2025 ChatCampus. All rights reserved.',
+      links: {
+        about: 'About',
+        howItWorks: 'How It Works',
+        colleges: 'Colleges',
+        benefits: 'Benefits',
+        helpCenter: 'Help Center',
+        privacy: 'Privacy Policy',
+        terms: 'Terms of Service',
+        contact: 'Contact Us'
+      },
+      colleges: {
+        iitBombay: 'IIT Bombay',
+        delhiUniversity: 'Delhi University',
+        vitVellore: 'VIT Vellore',
+        jnu: 'JNU',
+        srmInstitute: 'SRM Institute',
+        christUniversity: 'Christ University'
+      }
+    },
+    hi: {
+      description: 'कैंपसों में भारत के सबसे प्रतिभाशाली दिमागों को जोड़ना। ऑफलाइन संचार की क्रांति में शामिल हों और देशभर के छात्रों के साथ सार्थक रिश्ते बनाएं।',
+      quickLinks: 'त्वरित लिंक',
+      topColleges: 'शीर्ष कॉलेज',
+      support: 'सहयोग',
+      newsletter: {
+        title: 'अपडेट रहें',
+        description: 'नए कॉलेजों, सुविधाओं और कैंपस इवेंट्स के बारे में नवीनतम अपडेट प्राप्त करें।',
+        placeholder: 'अपना ईमेल दर्ज करें',
+        subscribe: 'सब्सक्राइब करें'
+      },
+      madeWith: 'के साथ बनाया गया',
+      forStudents: 'भारतीय छात्रों के लिए',
+      copyright: '© 2025 ChatCampus. सभी अधिकार सुरक्षित।',
+      links: {
+        about: 'हमारे बारे में',
+        howItWorks: 'कैसे काम करता है',
+        colleges: 'कॉलेज',
+        benefits: 'लाभ',
+        helpCenter: 'सहायता केंद्र',
+        privacy: 'गोपनीयता नीति',
+        terms: 'सेवा की शर्तें',
+        contact: 'संपर्क करें'
+      },
+      colleges: {
+        iitBombay: 'IIT बॉम्बे',
+        delhiUniversity: 'दिल्ली विश्वविद्यालय',
+        vitVellore: 'VIT वेल्लोर',
+        jnu: 'JNU',
+        srmInstitute: 'SRM संस्थान',
+        christUniversity: 'क्राइस्ट विश्वविद्यालय'
+      }
+    }
+  };
+
+  const t = translations[language];
+
   const quickLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Colleges', href: '#colleges' },
-    { name: 'Benefits', href: '#benefits' },
+    { name: t.links.about, href: '#about' },
+    { name: t.links.howItWorks, href: '#how-it-works' },
+    { name: t.links.colleges, href: '#colleges' },
+    { name: t.links.benefits, href: '#benefits' },
   ];
 
   const colleges = [
-    { name: 'IIT Bombay', href: '#' },
-    { name: 'Delhi University', href: '#' },
-    { name: 'VIT Vellore', href: '#' },
-    { name: 'JNU', href: '#' },
-    { name: 'SRM Institute', href: '#' },
-    { name: 'Christ University', href: '#' },
+    { name: t.colleges.iitBombay, href: '#' },
+    { name: t.colleges.delhiUniversity, href: '#' },
+    { name: t.colleges.vitVellore, href: '#' },
+    { name: t.colleges.jnu, href: '#' },
+    { name: t.colleges.srmInstitute, href: '#' },
+    { name: t.colleges.christUniversity, href: '#' },
   ];
 
   const support = [
-    { name: 'Help Center', href: '#' },
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms of Service', href: '#' },
-    { name: 'Contact Us', href: '#' },
+    { name: t.links.helpCenter, href: '#' },
+    { name: t.links.privacy, href: '#' },
+    { name: t.links.terms, href: '#' },
+    { name: t.links.contact, href: '#' },
   ];
 
   return (
@@ -49,8 +123,7 @@ export const Footer = () => {
               </span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-6 max-w-md">
-              Connecting India's brightest minds across campuses. Join the revolution of offline communication 
-              and build meaningful relationships with students nationwide.
+              {t.description}
             </p>
             
             {/* Social icons */}
@@ -74,7 +147,7 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-6 text-white">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-6 text-white">{t.quickLinks}</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -91,7 +164,7 @@ export const Footer = () => {
 
           {/* Featured Colleges */}
           <div>
-            <h3 className="text-xl font-bold mb-6 text-white">Top Colleges</h3>
+            <h3 className="text-xl font-bold mb-6 text-white">{t.topColleges}</h3>
             <ul className="space-y-3">
               {colleges.map((college) => (
                 <li key={college.name}>
@@ -108,7 +181,7 @@ export const Footer = () => {
 
           {/* Support */}
           <div>
-            <h3 className="text-xl font-bold mb-6 text-white">Support</h3>
+            <h3 className="text-xl font-bold mb-6 text-white">{t.support}</h3>
             <ul className="space-y-3 mb-6">
               {support.map((item) => (
                 <li key={item.name}>
@@ -143,16 +216,16 @@ export const Footer = () => {
         {/* Newsletter section */}
         <div className="border-t border-gray-700 pt-12 mb-12">
           <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-            <p className="text-gray-300 mb-6">Get the latest updates about new colleges, features, and campus events.</p>
+            <h3 className="text-2xl font-bold mb-4">{t.newsletter.title}</h3>
+            <p className="text-gray-300 mb-6">{t.newsletter.description}</p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t.newsletter.placeholder}
                 className="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-orange-500 text-white placeholder-gray-400"
               />
               <button className="bg-gradient-to-r from-orange-500 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-                Subscribe
+                {t.newsletter.subscribe}
               </button>
             </div>
           </div>
@@ -162,12 +235,12 @@ export const Footer = () => {
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center gap-2 text-gray-300 mb-4 md:mb-0">
-              <span>Made with</span>
+              <span>{t.madeWith}</span>
               <Heart size={16} className="text-red-500 fill-current animate-pulse" />
-              <span>for Indian students</span>
+              <span>{t.forStudents}</span>
             </div>
             <p className="text-gray-400 text-sm">
-              © 2025 ChatCampus. All rights reserved.
+              {t.copyright}
             </p>
           </div>
         </div>

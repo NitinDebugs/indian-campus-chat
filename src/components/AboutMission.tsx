@@ -1,10 +1,81 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Heart, Shield, Zap, Globe } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export const AboutMission = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { language } = useTheme();
+
+  const translations = {
+    en: {
+      badge: 'Our Mission',
+      title: 'Bridging Campus',
+      titleHighlight: 'Communities',
+      description1: 'ChatCampus was born from the vision to solve real communication gaps across Indian campuses. We believe every student deserves seamless connectivity with their peers, regardless of internet constraints or geographical barriers.',
+      description2: 'Our platform celebrates India\'s diverse academic landscape, from prestigious IITs to vibrant state universities, creating a unified digital space where knowledge, experiences, and friendships flourish.',
+      joinMission: 'Join Our Mission',
+      features: [
+        {
+          title: 'Built for Indian Youth',
+          description: 'Understanding the unique needs of Indian college students and campus culture.'
+        },
+        {
+          title: 'Secure & Private',
+          description: 'Your conversations stay local and secure with advanced encryption technology.'
+        },
+        {
+          title: 'Lightning Fast',
+          description: 'Instant messaging without internet dependency or data consumption.'
+        },
+        {
+          title: 'Pan-India Network',
+          description: 'Connecting students from Kashmir to Kanyakumari, creating a unified campus experience.'
+        }
+      ],
+      stats: {
+        uptime: 'Uptime',
+        states: 'States Covered',
+        support: 'Support',
+        cost: 'Cost to Use'
+      }
+    },
+    hi: {
+      badge: 'हमारा मिशन',
+      title: 'कैंपस को जोड़ना',
+      titleHighlight: 'समुदायें',
+      description1: 'ChatCampus का जन्म भारतीय कैंपसों में वास्तविक संचार अंतर को हल करने की दृष्टि से हुआ था। हमारा मानना है कि हर छात्र अपने साथियों के साथ निर्बाध कनेक्टिविटी का हकदार है, चाहे इंटरनेट की बाधाएं हों या भौगोलिक बाधाएं।',
+      description2: 'हमारा प्लेटफॉर्म भारत के विविध शैक्षणिक परिदृश्य का जश्न मनाता है, प्रतिष्ठित IIT से लेकर जीवंत राज्य विश्वविद्यालयों तक, एक एकीकृत डिजिटल स्थान बनाता है जहां ज्ञान, अनुभव और दोस्ती फलती-फूलती है।',
+      joinMission: 'हमारे मिशन में शामिल हों',
+      features: [
+        {
+          title: 'भारतीय युवाओं के लिए बनाया गया',
+          description: 'भारतीय कॉलेज छात्रों और कैंपस संस्कृति की अनूठी जरूरतों को समझना।'
+        },
+        {
+          title: 'सुरक्षित और निजी',
+          description: 'उन्नत एन्क्रिप्शन तकनीक के साथ आपकी बातचीत स्थानीय और सुरक्षित रहती है।'
+        },
+        {
+          title: 'बिजली की तेज़ी',
+          description: 'इंटरनेट निर्भरता या डेटा खपत के बिना तत्काल संदेश।'
+        },
+        {
+          title: 'पूरे भारत में नेटवर्क',
+          description: 'कश्मीर से कन्याकुमारी तक के छात्रों को जोड़ना, एक एकीकृत कैंपस अनुभव बनाना।'
+        }
+      ],
+      stats: {
+        uptime: 'अपटाइम',
+        states: 'कवर किए गए राज्य',
+        support: 'सहयोग',
+        cost: 'उपयोग की लागत'
+      }
+    }
+  };
+
+  const t = translations[language];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,23 +97,23 @@ export const AboutMission = () => {
   const features = [
     {
       icon: <Heart size={32} />,
-      title: "Built for Indian Youth",
-      description: "Understanding the unique needs of Indian college students and campus culture."
+      title: t.features[0].title,
+      description: t.features[0].description
     },
     {
       icon: <Shield size={32} />,
-      title: "Secure & Private",
-      description: "Your conversations stay local and secure with advanced encryption technology."
+      title: t.features[1].title,
+      description: t.features[1].description
     },
     {
       icon: <Zap size={32} />,
-      title: "Lightning Fast",
-      description: "Instant messaging without internet dependency or data consumption."
+      title: t.features[2].title,
+      description: t.features[2].description
     },
     {
       icon: <Globe size={32} />,
-      title: "Pan-India Network",
-      description: "Connecting students from Kashmir to Kanyakumari, creating a unified campus experience."
+      title: t.features[3].title,
+      description: t.features[3].description
     }
   ];
 
@@ -61,25 +132,23 @@ export const AboutMission = () => {
           <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
             <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/50 px-4 py-2 rounded-full text-sm font-medium text-orange-700 dark:text-orange-300 mb-6">
               <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-              Our Mission
+              {t.badge}
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
-              Bridging Campus <span className="bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">Communities</span>
+              {t.title} <span className="bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">{t.titleHighlight}</span>
             </h2>
 
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              ChatCampus was born from the vision to solve real communication gaps across Indian campuses. 
-              We believe every student deserves seamless connectivity with their peers, regardless of internet constraints or geographical barriers.
+              {t.description1}
             </p>
 
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-10 leading-relaxed">
-              Our platform celebrates India's diverse academic landscape, from prestigious IITs to vibrant state universities, 
-              creating a unified digital space where knowledge, experiences, and friendships flourish.
+              {t.description2}
             </p>
 
             <button className="bg-gradient-to-r from-orange-500 to-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-              Join Our Mission
+              {t.joinMission}
             </button>
           </div>
 
@@ -111,19 +180,19 @@ export const AboutMission = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent mb-2">99.9%</div>
-                <p className="text-gray-600 dark:text-gray-300 font-medium">Uptime</p>
+                <p className="text-gray-600 dark:text-gray-300 font-medium">{t.stats.uptime}</p>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent mb-2">28</div>
-                <p className="text-gray-600 dark:text-gray-300 font-medium">States Covered</p>
+                <p className="text-gray-600 dark:text-gray-300 font-medium">{t.stats.states}</p>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent mb-2">24/7</div>
-                <p className="text-gray-600 dark:text-gray-300 font-medium">Support</p>
+                <p className="text-gray-600 dark:text-gray-300 font-medium">{t.stats.support}</p>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent mb-2">0₹</div>
-                <p className="text-gray-600 dark:text-gray-300 font-medium">Cost to Use</p>
+                <p className="text-gray-600 dark:text-gray-300 font-medium">{t.stats.cost}</p>
               </div>
             </div>
           </div>
