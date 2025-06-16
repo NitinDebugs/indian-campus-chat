@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Hindi fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 /* India-themed design system with modern colors and animations */
 
 @layer base {
@@ -84,8 +87,18 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground;
     line-height: 1.6;
+  }
+
+  /* Default font for English */
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Hindi font when data-lang="hi" is set on html */
+  html[data-lang="hi"] body {
+    font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
   }
 
   html {

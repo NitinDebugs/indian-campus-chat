@@ -67,6 +67,8 @@ export default {
 			fontFamily: {
 				'inter': ['Inter', 'sans-serif'],
 				'jakarta': ['Plus Jakarta Sans', 'sans-serif'],
+				'hindi': ['Noto Sans Devanagari', 'Inter', 'sans-serif'],
+				'devanagari': ['Noto Sans Devanagari', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

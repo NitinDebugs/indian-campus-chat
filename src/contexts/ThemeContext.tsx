@@ -44,6 +44,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, [theme]);
 
   useEffect(() => {
+    const root = window.document.documentElement;
+    // Set data-lang attribute for font switching
+    root.setAttribute('data-lang', language);
     localStorage.setItem('language', language);
   }, [language]);
 
